@@ -4,25 +4,22 @@ using System.Drawing;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using WDSE;
 using WDSE.Decorators;
 using WDSE.ScreenshotMaker;
 
-namespace lab_ta_homework_5
+namespace lab_ta_homework_5.Tests
 {
     [TestClass]
-    public class Wiki
+    public class WikiTests
     {
         private IWebDriver driver;
 
         [TestInitialize]
         public void Initialize()
         {
-            ChromeOptions options = new ChromeOptions();
-            options.AddArgument("--start-maximized");
-            driver = new ChromeDriver(options);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            Driver.StartBrowser();
+            driver = Driver.driver;
         }
 
         [TestMethod]
@@ -53,7 +50,7 @@ namespace lab_ta_homework_5
             driver.Url = "https://en.wikipedia.org";
             var bytesArr = driver.TakeScreenshot(new VerticalCombineDecorator(new ScreenshotMaker()));
             Bitmap pageScreenshot = Driver.BytesToBitmap(bytesArr);
-            string path = $"C:\\Users\\Stanislav_Hrechykhin\\source\\repos\\lab_ta_homework_5\\Wiki images\\" + DateTime.Now.ToString("dd-MM-yyyy_HH-mm");
+            string path = $"C:\\Users\\{Environment.UserName}\\Desktop\\Images\\Wiki images\\" + DateTime.Now.ToString("dd-MM-yyyy HH-mm");
             Directory.CreateDirectory(path);
 
             IList<IWebElement> images = driver.FindElements(By.XPath("//*[@id='mp-upper']//img | //*[@id='mp-lower']//img"));
@@ -68,8 +65,7 @@ namespace lab_ta_homework_5
         [TestCleanup]
         public void Cleanup()
         {
-            driver.Quit();
-            driver.Dispose();
+            Driver.StopBrowser();
         }
     }
 }

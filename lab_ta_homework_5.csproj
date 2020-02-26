@@ -65,29 +65,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tests\BingTests.cs" />
     <Compile Include="MyWebDriver.cs" />
-    <Compile Include="Rozetka.cs" />
     <Compile Include="Search engines\Base.cs" />
     <Compile Include="Search engines\Bing.cs" />
     <Compile Include="Search engines\Google.cs" />
     <Compile Include="Search engines\Yahoo.cs" />
-    <Compile Include="Shopping websites\Aliexpress.cs" />
+    <Compile Include="Shopping websites\AliExpress.cs" />
     <Compile Include="Shopping websites\Base.cs" />
     <Compile Include="Shopping websites\Olx.cs" />
     <Compile Include="Shopping websites\Rozetka.cs" />
-    <Compile Include="Test.cs" />
-    <Compile Include="Wiki.cs" />
+    <Compile Include="Tests\ShoppingTests.cs" />
+    <Compile Include="Tests\GoogleTests.cs" />
+    <Compile Include="Tests\WikiTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\YahooTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Bing images\" />
-    <Folder Include="Google images\" />
-    <Folder Include="Wiki images\" />
-    <Folder Include="Yahoo images\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -96,8 +93,8 @@
     </PropertyGroup>
     <Error Condition="!Exists('packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.props'))" />
     <Error Condition="!Exists('packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.targets'))" />
-    <Error Condition="!Exists('packages\Selenium.WebDriver.ChromeDriver.80.0.3987.1600\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.ChromeDriver.80.0.3987.1600\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+    <Error Condition="!Exists('packages\Selenium.WebDriver.ChromeDriver.80.0.3987.10600\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.ChromeDriver.80.0.3987.10600\build\Selenium.WebDriver.ChromeDriver.targets'))" />
   </Target>
   <Import Project="packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.targets" Condition="Exists('packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.targets')" />
-  <Import Project="packages\Selenium.WebDriver.ChromeDriver.80.0.3987.1600\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('packages\Selenium.WebDriver.ChromeDriver.80.0.3987.1600\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Import Project="packages\Selenium.WebDriver.ChromeDriver.80.0.3987.10600\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('packages\Selenium.WebDriver.ChromeDriver.80.0.3987.10600\build\Selenium.WebDriver.ChromeDriver.targets')" />
 </Project>
