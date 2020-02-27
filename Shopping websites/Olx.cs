@@ -28,7 +28,7 @@ namespace lab_ta_homework_5.Shopping_websites
 
         private By listContainer = By.XPath("//div[@id='listContainer']");
 
-        public Olx(int minPrice) : base(minPrice)
+        public Olx() : base()
         {
             Url = Constants.olxUrl;
             PricesXPath = Constants.olxPricesXPath;
@@ -54,11 +54,11 @@ namespace lab_ta_homework_5.Shopping_websites
             laptopsInDropdown.Click();
         }
 
-        public void SetMinPrice()
+        public void SetMinPrice(int minPrice)
         {
             WaitListLoad(Constants.explicitWaitSec);
             minField.Click();
-            filterInput.SendKeys(MinPrice.ToString());
+            filterInput.SendKeys(minPrice.ToString());
         }
 
         public override IEnumerable<int> GetPrices()

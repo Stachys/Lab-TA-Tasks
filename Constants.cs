@@ -11,7 +11,7 @@ namespace lab_ta_homework_5
         public const int minPrice = 65000;
 
         //Search engine base
-        public static string pathToImages = $"C:\\Users\\{Environment.UserName}\\Desktop\\Images\\";
+        public const string pathToImages = "C:\\Users\\{0}\\Desktop\\Images\\{1}\\{2} by {3}\\";
         public const string foundToConsole = "Found {0} by {1} on {2} page";
         public const string imageNameFound = "{0}\\Page {1} - found.png";
         public const string imageNameNotFound = "{0}\\Page {1} - not found.png";
@@ -20,7 +20,6 @@ namespace lab_ta_homework_5
         public const string bingUrl = "https://www.bing.com/";
         public const string bingSearchFieldXPath = "//input[@id='sb_form_q']";
         public const string bingResultsXPath = "//li[@class='b_algo']/*";
-        public const string bingPathToSave = "Bing images\\{0} by {1} ";
         public const string bingNextXPath = "//a[@title='Next page']";
         public const string bingPageNumXPath = "//li[@class='b_pag']/nav[@role='navigation']//a[contains(@class, 'sb_pagS_bp')]";
 
@@ -28,7 +27,6 @@ namespace lab_ta_homework_5
         public const string googleUrl = "https://www.google.com/";
         public const string googleSearchFieldXPath = "//input[@name='q']";
         public const string googleResultsXPath = "//div[@class='g']//div[@class='r']//h3 | //div[@class='g']//span[@class='st']";
-        public const string googlePathToSave = "Google images\\{0} by {1} ";
         public const string googleNextXPath = "//*[@id='pnnext']";
         public const string googlePageNumXPath = "//td[@class='cur']";
 
@@ -36,7 +34,6 @@ namespace lab_ta_homework_5
         public const string yahooUrl = "https://www.yahoo.com/";
         public const string yahooSearchFieldXPath = "//input[@id='header-search-input']";
         public const string yahooResultsXPath = "//div[@id='web']//li/div/div";
-        public const string yahooPathToSave = "Yahoo images\\{0} by {1} ";
         public const string yahooNextXPath = "//a[@class='next']";
         public const string yahooPageNumXPath = "//div[@class='compPagination']/strong";
 

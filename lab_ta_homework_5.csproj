@@ -65,10 +65,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\AliExpressBll.cs" />
+    <Compile Include="BLL\OlxBll.cs" />
+    <Compile Include="BLL\RozetkaBll.cs" />
+    <Compile Include="BLL\SearchEngineBll.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Tests\BingTests.cs" />
     <Compile Include="MyWebDriver.cs" />
-    <Compile Include="Search engines\Base.cs" />
+    <Compile Include="Search engines\SearchEngine.cs" />
     <Compile Include="Search engines\Bing.cs" />
     <Compile Include="Search engines\Google.cs" />
     <Compile Include="Search engines\Yahoo.cs" />

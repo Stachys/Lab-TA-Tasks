@@ -2,14 +2,13 @@
 
 namespace lab_ta_homework_5.Search_engines
 {
-    class Bing : Base
+    class Bing : SearchEngine
     {
-        public Bing(string toSearch, string toFind) : base(toSearch, toFind)
+        public Bing() : base()
         {
             Url = Constants.bingUrl;
             SearchFieldXPath = Constants.bingSearchFieldXPath;
             ResultsXPath = Constants.bingResultsXPath;
-            PathToSave += String.Format(Constants.bingPathToSave + DateTime.Now.ToString(Constants.dateTime), ToFind, ToSearch);
             NextXPath = Constants.bingNextXPath;
             PageNumXPath = Constants.bingPageNumXPath;
         }

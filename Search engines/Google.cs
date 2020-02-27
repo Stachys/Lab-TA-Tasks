@@ -2,14 +2,13 @@
 
 namespace lab_ta_homework_5.Search_engines
 {
-    class Google : Base
+    class Google : SearchEngine
     {
-        public Google(string toSearch, string toFind) : base(toSearch, toFind)
+        public Google() : base()
         {
             Url = Constants.googleUrl;
             SearchFieldXPath = Constants.googleSearchFieldXPath;
             ResultsXPath = Constants.googleResultsXPath;
-            PathToSave += String.Format(Constants.googlePathToSave + DateTime.Now.ToString(Constants.dateTime), ToFind, ToSearch);
             NextXPath = Constants.googleNextXPath;
             PageNumXPath = Constants.googlePageNumXPath;
         }

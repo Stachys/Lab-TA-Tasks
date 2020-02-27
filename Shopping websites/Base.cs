@@ -12,14 +12,11 @@ namespace lab_ta_homework_5.Shopping_websites
         protected IWebDriver driver;
         protected string Url { get; set; }
 
-        protected int MinPrice { get; set; }
-
         protected string PricesXPath { get; set; }
 
-        protected Base(int minPrice)
+        protected Base()
         {
             driver = Driver.driver;
-            MinPrice = minPrice;
             PageFactory.InitElements(driver, this);
         }
 

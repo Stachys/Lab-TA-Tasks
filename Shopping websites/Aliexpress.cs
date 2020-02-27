@@ -41,7 +41,7 @@ namespace lab_ta_homework_5.Shopping_websites
 
         private By adContainer = By.XPath("//div[@class='newuser-container' and contains(@style,'background-image')]");
 
-        public AliExpress(int minPrice) : base(minPrice)
+        public AliExpress() : base()
         {
             Url = Constants.aliExpressUrl;
             PricesXPath = Constants.aliExpressPricesXPath;
@@ -95,9 +95,9 @@ namespace lab_ta_homework_5.Shopping_websites
             laptops.Click();
         }
 
-        public void SetMinPrice()
+        public void SetMinPrice(int minPrice)
         {
-            minField.SendKeys(MinPrice.ToString());
+            minField.SendKeys(minPrice.ToString());
         }
 
         public void SubmitFilter()

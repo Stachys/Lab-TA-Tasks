@@ -50,7 +50,7 @@ namespace lab_ta_homework_5.Tests
             driver.Url = "https://en.wikipedia.org";
             var bytesArr = driver.TakeScreenshot(new VerticalCombineDecorator(new ScreenshotMaker()));
             Bitmap pageScreenshot = Driver.BytesToBitmap(bytesArr);
-            string path = $"C:\\Users\\{Environment.UserName}\\Desktop\\Images\\Wiki images\\" + DateTime.Now.ToString("dd-MM-yyyy HH-mm");
+            string path = $"C:\\Users\\{Environment.UserName}\\Desktop\\Images\\Wiki\\" + DateTime.Now.ToString("dd-MM-yyyy HH-mm");
             Directory.CreateDirectory(path);
 
             IList<IWebElement> images = driver.FindElements(By.XPath("//*[@id='mp-upper']//img | //*[@id='mp-lower']//img"));

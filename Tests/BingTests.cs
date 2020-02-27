@@ -1,4 +1,4 @@
-﻿using lab_ta_homework_5.Search_engines;
+﻿using lab_ta_homework_5.BLL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace lab_ta_homework_5.Tests
@@ -15,10 +15,10 @@ namespace lab_ta_homework_5.Tests
         [TestMethod]
         public void BingFoundNotOnFirstPage()
         {
-            Bing bing = new Bing("Glass boga anisotropic polycarbonate", "Allen's Seminar");
-            bing.GoToPage();
-            bing.Search();
-            Assert.IsTrue(bing.VerifyResults(false) > 0);
+            SearchEngineBll bing = new SearchEngineBll();
+            bing.OnTheMainBingPage();
+            bing.Search("Glass boga anisotropic polycarbonate");
+            bing.VerifyResultNotOnFirstPage("Allen's Seminar");
         }
 
         //TODO

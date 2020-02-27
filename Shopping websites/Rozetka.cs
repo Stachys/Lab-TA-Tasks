@@ -23,7 +23,9 @@ namespace lab_ta_homework_5.Shopping_websites
 
         private By filterOption = By.XPath("//li[@class='catalog-selection__item']/a");
 
-        public Rozetka(int minPrice) : base(minPrice)
+        private int MinPrice { get; set; }
+
+        public Rozetka() : base()
         {
             Url = Constants.rozetkaUrl;
             PricesXPath = Constants.rozetkaPricesXPath;
@@ -46,8 +48,9 @@ namespace lab_ta_homework_5.Shopping_websites
             laptops.Click();
         }
 
-        public void SetMinPrice()
+        public void SetMinPrice(int minPrice)
         {
+            MinPrice = minPrice;
             minField.Clear();
             minField.SendKeys(MinPrice.ToString());
         }

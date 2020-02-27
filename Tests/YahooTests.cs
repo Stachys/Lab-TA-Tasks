@@ -1,4 +1,4 @@
-﻿using lab_ta_homework_5.Search_engines;
+﻿using lab_ta_homework_5.BLL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace lab_ta_homework_5.Tests
@@ -15,10 +15,10 @@ namespace lab_ta_homework_5.Tests
         [TestMethod]
         public void YahooFoundNotOnFirstPage()
         {
-            Yahoo yahoo = new Yahoo("Ooga anisotropic polycarbonate", "Shin-Etsu Polymer America");
-            yahoo.GoToPage();
-            yahoo.Search();
-            Assert.IsTrue(yahoo.VerifyResults(false) > 0);
+            SearchEngineBll yahoo = new SearchEngineBll();
+            yahoo.OnTheMainYahooPage();
+            yahoo.Search("Ooga anisotropic polycarbonate");
+            yahoo.VerifyResultNotOnFirstPage("Shin-Etsu Polymer America");
         }
 
         //TODO

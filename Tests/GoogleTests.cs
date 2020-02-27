@@ -1,4 +1,4 @@
-﻿using lab_ta_homework_5.Search_engines;
+﻿using lab_ta_homework_5.BLL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace lab_ta_homework_5.Tests
@@ -15,28 +15,28 @@ namespace lab_ta_homework_5.Tests
         [TestMethod]
         public void GoogleFoundOnFirstPage()
         {
-            Google google = new Google("Ooga anisotropic polycarbonate", "Strain Hardening of Polycarbonate");
-            google.GoToPage();
-            google.Search();
-            Assert.IsTrue(google.VerifyResults(false) == 1);
+            SearchEngineBll google = new SearchEngineBll();
+            google.OnTheMainGooglePage();
+            google.Search("Ooga anisotropic polycarbonate");
+            google.VerifyResultOnFirstPage("Strain Hardening of Polycarbonate");
         }
 
         [TestMethod]
         public void GoogleFoundNotOnFirstPage()
         {
-            Google google = new Google("Ooga anisotropic polycarbonate", "European Patent");
-            google.GoToPage();
-            google.Search();
-            Assert.IsTrue(google.VerifyResults(false) > 1);
+            SearchEngineBll google = new SearchEngineBll();
+            google.OnTheMainGooglePage();
+            google.Search("Ooga anisotropic polycarbonate");
+            google.VerifyResultNotOnFirstPage("European Patent");
         }
 
         [TestMethod]
         public void GoogleNotFoundScreenAll()
         {
-            Google google = new Google("Ooga anisotropic polycarbonate", "ASFhgghgdsfgkdjhg");
-            google.GoToPage();
-            google.Search();
-            Assert.IsTrue(google.VerifyResults(true) == 0);
+            SearchEngineBll google = new SearchEngineBll();
+            google.OnTheMainGooglePage();
+            google.Search("Ooga anisotropic polycarbonate");
+            google.NoResultScreenAllPages("ASFhgghgdsfgkdjhg");
         }
 
         [TestCleanup]

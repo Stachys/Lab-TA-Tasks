@@ -8,7 +8,7 @@ using WDSE.ScreenshotMaker;
 
 namespace lab_ta_homework_5.Search_engines
 {
-    abstract class Base
+    class SearchEngine
     {
         protected IWebDriver driver;
 
@@ -16,34 +16,35 @@ namespace lab_ta_homework_5.Search_engines
 
         protected string SearchFieldXPath { get; set; }
 
-        protected string ToSearch { get; set; }
-
-        protected string ToFind { get; set; }
-
-        protected string PathToSave { get; set; } = Constants.pathToImages;
-
         protected string ResultsXPath { get; set; }
 
         protected string NextXPath { get; set; }
 
         protected string PageNumXPath { get; set; }
 
-        protected Base(string toSearch, string toFind)
+        private string ToSearch { get; set; }
+
+        private string ToFind { get; set; }
+
+        private string PathToSave { get; set; }
+
+        protected SearchEngine()
         {
             driver = Driver.driver;
-            ToSearch = toSearch;
-            ToFind = toFind;
         }
 
-        public void Search() 
+        public void Search(string toSearch) 
         {
+            ToSearch = toSearch;
             IWebElement searchField = driver.FindElement(By.XPath(SearchFieldXPath));
             searchField.SendKeys(ToSearch);
             searchField.SendKeys(Keys.Enter);
         }
 
-        public int VerifyResults(bool screenshotAllPages)
+        public int VerifyResults(string toFind, bool screenshotAllPages)
         {
+            ToFind = toFind;
+            PathToSave = String.Format(Constants.pathToImages, Environment.UserName, this.GetType().Name, ToFind, ToSearch + " " + DateTime.Now.ToString(Constants.dateTime));
             Directory.CreateDirectory(PathToSave);
             IList<IWebElement> next;
             do
