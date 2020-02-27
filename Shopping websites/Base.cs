@@ -29,19 +29,14 @@ namespace lab_ta_homework_5.Shopping_websites
 
         public virtual IEnumerable<int> GetPrices()
         {
-            IEnumerable<int> results = driver.FindElements(By.XPath(PricesXPath)).Select(p => Int32.Parse(Regex.Replace(p.Text, "[^0-9]", "")));
-            foreach (int result in results)
-            {
-                Console.WriteLine(result.ToString());
-            }
-            return results;
+            return driver.FindElements(By.XPath(PricesXPath)).Select(p => Int32.Parse(Regex.Replace(p.Text, "[^0-9]", "")));
         }
 
         public void GoToPage()
         {
             if (Url.Length == 0)
             {
-                throw new InvalidOperationException("Page has no predefined url");
+                throw new InvalidOperationException(Constants.noUrlMessage);
             }
 
             driver.Navigate().GoToUrl(Url);

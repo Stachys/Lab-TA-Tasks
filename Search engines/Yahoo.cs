@@ -6,12 +6,12 @@ namespace lab_ta_homework_5.Search_engines
     {
         public Yahoo(string toSearch, string toFind) : base(toSearch, toFind)
         {
-            Url = "https://www.yahoo.com/";
-            SearchFieldXPath = "//input[@id='header-search-input']";
-            ResultsXPath = "//div[@id='web']//li/div/div";
-            PathToSave += $"Yahoo images\\{ToFind} by {ToSearch} " + DateTime.Now.ToString("dd-MM-yyyy HH-mm");
-            NextXPath = "//a[@class='next']";
-            PageNumXPath = "//div[@class='compPagination']/strong";
+            Url = Constants.yahooUrl;
+            SearchFieldXPath = Constants.yahooSearchFieldXPath;
+            ResultsXPath = Constants.yahooResultsXPath;
+            PathToSave += String.Format(Constants.yahooPathToSave + DateTime.Now.ToString(Constants.dateTime), ToFind, ToSearch);
+            NextXPath = Constants.yahooNextXPath;
+            PageNumXPath = Constants.yahooPageNumXPath;
         }
     }
 }

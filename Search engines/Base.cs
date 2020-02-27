@@ -20,7 +20,7 @@ namespace lab_ta_homework_5.Search_engines
 
         protected string ToFind { get; set; }
 
-        protected string PathToSave { get; set; } = $"C:\\Users\\{Environment.UserName}\\Desktop\\Images\\";
+        protected string PathToSave { get; set; } = Constants.pathToImages;
 
         protected string ResultsXPath { get; set; }
 
@@ -54,9 +54,9 @@ namespace lab_ta_homework_5.Search_engines
                 {
                     if (result.Text.Contains(ToFind))
                     {
-                        Console.WriteLine($"Found {ToFind} by {ToSearch} on {pageNum} page");
+                        Console.WriteLine(String.Format(Constants.foundToConsole, ToFind, ToSearch, pageNum));
                         var bytesArr = driver.TakeScreenshot(new VerticalCombineDecorator(new ScreenshotMaker().RemoveScrollBarsWhileShooting()));
-                        Driver.BytesToBitmap(bytesArr).Save($"{PathToSave}\\Page {pageNum} - found.png");
+                        Driver.BytesToBitmap(bytesArr).Save(String.Format(Constants.imageNameFound, PathToSave, pageNum));
                         return Int32.Parse(pageNum);
                     }
                 }
@@ -64,7 +64,7 @@ namespace lab_ta_homework_5.Search_engines
                 if (screenshotAllPages)
                 {
                     var bytesArr = driver.TakeScreenshot(new VerticalCombineDecorator(new ScreenshotMaker().RemoveScrollBarsWhileShooting()));
-                    Driver.BytesToBitmap(bytesArr).Save($"{PathToSave}\\Page {pageNum} - not found.png");
+                    Driver.BytesToBitmap(bytesArr).Save(String.Format(Constants.imageNameNotFound, PathToSave, pageNum));
                 }
 
                 next = driver.FindElements(By.XPath(NextXPath));
@@ -82,7 +82,7 @@ namespace lab_ta_homework_5.Search_engines
         {
             if (Url.Length == 0)
             {
-                throw new InvalidOperationException("Page has no predefined url");
+                throw new InvalidOperationException(Constants.noUrlMessage);
             }
 
             driver.Navigate().GoToUrl(Url);

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using lab_ta_homework_5.Shopping_websites;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -46,13 +47,13 @@ namespace lab_ta_homework_5.Tests
         {
             AliExpress aliExpress = new AliExpress(65000);
             aliExpress.GoToPage();
-            aliExpress.CloseAd();
             aliExpress.SignIn();
             aliExpress.Search();
             aliExpress.SetFilter();
             IEnumerable<int> prices = aliExpress.GetPrices();
             foreach (int price in prices)
             {
+                Console.WriteLine(price.ToString());
                 Assert.IsTrue(price >= 65000);
             }
         }

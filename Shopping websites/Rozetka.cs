@@ -25,8 +25,8 @@ namespace lab_ta_homework_5.Shopping_websites
 
         public Rozetka(int minPrice) : base(minPrice)
         {
-            Url = "https://rozetka.com.ua/";
-            PricesXPath = "//ul[@class='catalog-grid']//span[@class='goods-tile__price-value']";
+            Url = Constants.rozetkaUrl;
+            PricesXPath = Constants.rozetkaPricesXPath;
         }
 
         public override void Search()
@@ -47,7 +47,7 @@ namespace lab_ta_homework_5.Shopping_websites
 
         public override IEnumerable<int> GetPrices()
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(Constants.explicitWaitSec));
             wait.Until(ExpectedConditions.TextToBePresentInElementLocated(filterOption, MinPrice.ToString()));
 
             return base.GetPrices();

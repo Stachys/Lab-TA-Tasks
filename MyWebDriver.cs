@@ -15,7 +15,7 @@ namespace lab_ta_homework_5
             ChromeOptions options = new ChromeOptions();
             options.AddArgument("--start-maximized");
             driver = new ChromeDriver(options);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Constants.implicitWaitSec);
         }
 
         static public Bitmap BytesToBitmap(byte[] bytesArr)

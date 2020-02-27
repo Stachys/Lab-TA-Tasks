@@ -1,16 +1,16 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace lab_ta_homework_5.Shopping_websites
 {
     class AliExpress : Base
     {
-        private const string login = "emailfortests88@gmail.com";
-        private const string password = "glGfggD0S";
-        
-        [FindsBy(How = How.XPath, Using = "//div[@class='ui-window-bd']//a[@class='close-layer']")]
+        [FindsBy(How = How.XPath, Using = "//a[contains(@class,'close')]")]
         private IWebElement closeAd;
 
         [FindsBy(How = How.XPath, Using = "//span[@class='user-account-port']")]
@@ -40,32 +40,51 @@ namespace lab_ta_homework_5.Shopping_websites
         [FindsBy(How = How.XPath, Using = "//a[@class='ui-button narrow-go']")]
         private IWebElement submitFilter;
 
+        private By adContainer = By.XPath("//div[@class='newuser-container' and contains(@style,'background-image')]");
+
         public AliExpress(int minPrice) : base(minPrice)
         {
-            Url = "https://aliexpress.ru/";
-            PricesXPath = "//div[contains(@class,'product-list')]//span[@class='price-current']";
+            Url = Constants.aliExpressUrl;
+            PricesXPath = Constants.aliExpressPricesXPath;
         }
 
         public void CloseAd()
         {
-            closeAd.Click();
+            TimeSpan wait = driver.Manage().Timeouts().ImplicitWait;
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
+            if (driver.FindElements(adContainer).Count != 0)
+            {
+                closeAd.Click();
+            }
+            driver.Manage().Timeouts().ImplicitWait = wait;
+        }
+
+        private void ClickLoginButton()
+        {
+            singInButton.Click();
+            if (singInButton.Displayed)
+            {
+                ClickLoginButton();
+            }
         }
 
         public void SignIn()
         {
+            CloseAd();
             Actions action = new Actions(driver);
             action.MoveToElement(myProfile);
             action.Perform();
-            singInButton.Click();
+            ClickLoginButton();
             driver.SwitchTo().Frame(signInFrame);
-            loginField.SendKeys(login);
-            passwordField.SendKeys(password);
+            loginField.SendKeys(Constants.login);
+            passwordField.SendKeys(Constants.password);
             passwordField.SendKeys(Keys.Enter);
             driver.SwitchTo().DefaultContent();
         }
 
         public override void Search()
         {
+            CloseAd();
             Actions action = new Actions(driver);
             action.MoveToElement(computers);
             action.Perform();
@@ -74,15 +93,14 @@ namespace lab_ta_homework_5.Shopping_websites
 
         public override void SetFilter()
         {
+            CloseAd();
             minField.SendKeys(MinPrice.ToString());
             submitFilter.Click();
         }
 
         public override IEnumerable<int> GetPrices()
         {
-            // TODO
-
-            return base.GetPrices();
+            return driver.FindElements(By.XPath(PricesXPath)).Select(p => Int32.Parse(p.Text.Substring(0, p.Text.IndexOf('-') - 4).Replace(" ", "")));
         }
     }
 }

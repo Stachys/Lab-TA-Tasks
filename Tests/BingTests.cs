@@ -18,7 +18,7 @@ namespace lab_ta_homework_5.Tests
             Bing bing = new Bing("Glass boga anisotropic polycarbonate", "Allen's Seminar");
             bing.GoToPage();
             bing.Search();
-            Assert.IsTrue(bing.VerifyResults(true) > 0);
+            Assert.IsTrue(bing.VerifyResults(false) > 0);
         }
 
         //TODO

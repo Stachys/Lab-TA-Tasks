@@ -30,8 +30,8 @@ namespace lab_ta_homework_5.Shopping_websites
 
         public Olx(int minPrice) : base(minPrice)
         {
-            Url = "https://www.olx.ua/";
-            PricesXPath = "//p[@class='price']/strong";
+            Url = Constants.olxUrl;
+            PricesXPath = Constants.olxPricesXPath;
         }
 
         public override void Search()
@@ -44,14 +44,14 @@ namespace lab_ta_homework_5.Shopping_websites
 
         public override void SetFilter()
         {
-            WaitListLoad(5);
+            WaitListLoad(Constants.explicitWaitSec);
             minField.Click();
             filterInput.SendKeys(MinPrice.ToString());
         }
 
         public override IEnumerable<int> GetPrices()
         {
-            WaitListLoad(5);
+            WaitListLoad(Constants.explicitWaitSec);
             return base.GetPrices();
         }
 
