@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.PageObjects;
-using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,47 +58,57 @@ namespace lab_ta_homework_5.Shopping_websites
             driver.Manage().Timeouts().ImplicitWait = wait;
         }
 
-        private void ClickLoginButton()
+        public void MoveToMyProfile()
+        {
+            Actions action = new Actions(driver);
+            action.MoveToElement(myProfile);
+            action.Perform();
+        }
+
+        public void SingInClick()
         {
             singInButton.Click();
             if (singInButton.Displayed)
             {
-                ClickLoginButton();
+                SingInClick();
             }
         }
 
-        public void SignIn()
+        public void FillSignInForm(string login, string password)
         {
-            CloseAd();
-            Actions action = new Actions(driver);
-            action.MoveToElement(myProfile);
-            action.Perform();
-            ClickLoginButton();
             driver.SwitchTo().Frame(signInFrame);
-            loginField.SendKeys(Constants.login);
-            passwordField.SendKeys(Constants.password);
+            loginField.SendKeys(login);
+            passwordField.SendKeys(password);
             passwordField.SendKeys(Keys.Enter);
             driver.SwitchTo().DefaultContent();
         }
 
-        public override void Search()
+        public void MoveToComputers()
         {
-            CloseAd();
             Actions action = new Actions(driver);
             action.MoveToElement(computers);
             action.Perform();
+        }
+
+        public void LabtopsClick()
+        {
             laptops.Click();
         }
 
-        public override void SetFilter()
+        public void SetMinPrice()
         {
-            CloseAd();
             minField.SendKeys(MinPrice.ToString());
+        }
+
+        public void SubmitFilter()
+        {
             submitFilter.Click();
         }
 
         public override IEnumerable<int> GetPrices()
         {
+            //Add explicit wait
+
             return driver.FindElements(By.XPath(PricesXPath)).Select(p => Int32.Parse(p.Text.Substring(0, p.Text.IndexOf('-') - 4).Replace(" ", "")));
         }
     }

@@ -4,10 +4,11 @@ namespace lab_ta_homework_5
 {
     public static class Constants
     {
-        public const int implicitWaitSec = 5;
-        public const int explicitWaitSec = 5;
+        public const int implicitWaitSec = 10;
+        public const int explicitWaitSec = 10;
         public const string dateTime = "dd-MM-yyyy HH-mm";
         public const string noUrlMessage = "Page has no predefined url";
+        public const int minPrice = 65000;
 
         //Search engine base
         public static string pathToImages = $"C:\\Users\\{Environment.UserName}\\Desktop\\Images\\";

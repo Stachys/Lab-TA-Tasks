@@ -29,19 +29,31 @@ namespace lab_ta_homework_5.Shopping_websites
             PricesXPath = Constants.rozetkaPricesXPath;
         }
 
-        public override void Search()
+        public void CatalogeClick()
         {
             cataloge.Click();
+        }
+
+        public void MoveToComputersMenu()
+        {
             Actions action = new Actions(driver);
             action.MoveToElement(computersMenu);
             action.Perform();
+        }
+
+        public void LaptopsClick()
+        {
             laptops.Click();
         }
 
-        public override void SetFilter()
+        public void SetMinPrice()
         {
             minField.Clear();
             minField.SendKeys(MinPrice.ToString());
+        }
+
+        public void SubmitFilter()
+        {
             minField.SendKeys(Keys.Enter);
         }
 

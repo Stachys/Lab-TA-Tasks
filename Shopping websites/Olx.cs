@@ -34,15 +34,27 @@ namespace lab_ta_homework_5.Shopping_websites
             PricesXPath = Constants.olxPricesXPath;
         }
 
-        public override void Search()
+        public void ElectronicsClick()
         {
             electronics.Click();
-            laptopsAndAccessories.Click();
+        }
+
+        public void LaptopsAndAccessories()
+        {
+            laptopsAndAccessories.Click();            
+        }
+
+        public void TypeOfGoodsDropdown()
+        {
             typeOfGoodsDropdown.Click();
+        }
+
+        public void LaptopsInDropdown()
+        {
             laptopsInDropdown.Click();
         }
 
-        public override void SetFilter()
+        public void SetMinPrice()
         {
             WaitListLoad(Constants.explicitWaitSec);
             minField.Click();

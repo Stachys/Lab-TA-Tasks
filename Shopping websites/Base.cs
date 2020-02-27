@@ -23,10 +23,6 @@ namespace lab_ta_homework_5.Shopping_websites
             PageFactory.InitElements(driver, this);
         }
 
-        public abstract void Search();
-
-        public abstract void SetFilter();
-
         public virtual IEnumerable<int> GetPrices()
         {
             return driver.FindElements(By.XPath(PricesXPath)).Select(p => Int32.Parse(Regex.Replace(p.Text, "[^0-9]", "")));

@@ -17,44 +17,55 @@ namespace lab_ta_homework_5.Tests
         [TestMethod]
         public void Olx()
         {
-            Olx olx = new Olx(65000);
+            Olx olx = new Olx(Constants.minPrice);
             olx.GoToPage();
-            olx.Search();
-            olx.SetFilter();
+            olx.ElectronicsClick();
+            olx.LaptopsAndAccessories();
+            olx.TypeOfGoodsDropdown();
+            olx.LaptopsInDropdown();
+            olx.SetMinPrice();
             IEnumerable<int> prices = olx.GetPrices();
             foreach (int price in prices)
             {
-                Assert.IsTrue(price >= 65000);
+                Assert.IsTrue(price >= Constants.minPrice);
             }
         }
 
         [TestMethod]
         public void Rozetka()
         {
-            Rozetka rozetka = new Rozetka(65000);
+            Rozetka rozetka = new Rozetka(Constants.minPrice);
             rozetka.GoToPage();
-            rozetka.Search();
-            rozetka.SetFilter();
+            rozetka.CatalogeClick();
+            rozetka.MoveToComputersMenu();
+            rozetka.LaptopsClick();
+            rozetka.SetMinPrice();
+            rozetka.SubmitFilter();
             IEnumerable<int> prices = rozetka.GetPrices();
             foreach (int price in prices)
             {
-                Assert.IsTrue(price >= 65000);
+                Assert.IsTrue(price >= Constants.minPrice);
             }
         }
 
         [TestMethod]
         public void AliExpress()
         {
-            AliExpress aliExpress = new AliExpress(65000);
+            AliExpress aliExpress = new AliExpress(Constants.minPrice);
             aliExpress.GoToPage();
-            aliExpress.SignIn();
-            aliExpress.Search();
-            aliExpress.SetFilter();
+            aliExpress.CloseAd();
+            aliExpress.MoveToMyProfile();
+            aliExpress.SingInClick();
+            aliExpress.FillSignInForm(Constants.login, Constants.password);
+            aliExpress.MoveToComputers();
+            aliExpress.LabtopsClick();
+            aliExpress.SetMinPrice();
+            aliExpress.SubmitFilter();
             IEnumerable<int> prices = aliExpress.GetPrices();
             foreach (int price in prices)
             {
                 Console.WriteLine(price.ToString());
-                Assert.IsTrue(price >= 65000);
+                Assert.IsTrue(price >= Constants.minPrice);
             }
         }
 
