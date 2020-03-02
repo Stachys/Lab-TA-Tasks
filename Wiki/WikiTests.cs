@@ -8,7 +8,7 @@ using WDSE;
 using WDSE.Decorators;
 using WDSE.ScreenshotMaker;
 
-namespace lab_ta_homework_5.Tests
+namespace lab_ta_homework_5.Wiki
 {
     [TestClass]
     public class WikiTests
