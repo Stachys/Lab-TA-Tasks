@@ -4,9 +4,6 @@ using System.Drawing;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using WDSE;
-using WDSE.Decorators;
-using WDSE.ScreenshotMaker;
 
 namespace lab_ta_homework_5.Wiki
 {
@@ -48,8 +45,7 @@ namespace lab_ta_homework_5.Wiki
         public void ScreenAllImages()
         {
             driver.Url = "https://en.wikipedia.org";
-            var bytesArr = driver.TakeScreenshot(new VerticalCombineDecorator(new ScreenshotMaker()));
-            Bitmap pageScreenshot = Driver.BytesToBitmap(bytesArr);
+            Bitmap pageScreenshot = Driver.GetScreenshot();
             string path = $"C:\\Users\\{Environment.UserName}\\Desktop\\Images\\Wiki\\" + DateTime.Now.ToString("dd-MM-yyyy HH-mm");
             Directory.CreateDirectory(path);
 

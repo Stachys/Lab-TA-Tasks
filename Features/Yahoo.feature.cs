@@ -141,11 +141,11 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("search")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Ooga anisotropic polycarbonate")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:search", "Ooga anisotropic polycarbonate")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:find", "")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:find", "Taking control of anisotropy")]
         public virtual void VerifyThatKeyWordFoundOnTheFirstPage_OogaAnisotropicPolycarbonate()
         {
 #line 7
-this.VerifyThatKeyWordFoundOnTheFirstPage("Ooga anisotropic polycarbonate", "", ((string[])(null)));
+this.VerifyThatKeyWordFoundOnTheFirstPage("Ooga anisotropic polycarbonate", "Taking control of anisotropy", ((string[])(null)));
 #line hidden
         }
         
@@ -255,11 +255,11 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("search")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Ooga anisotropic polycarbonate")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:search", "Ooga anisotropic polycarbonate")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:find", "")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:find", "JHFkjhdskjhfkjjgsajgfg")]
         public virtual void VerifyThatKeyWordWasntFound_OogaAnisotropicPolycarbonate()
         {
 #line 27
-this.VerifyThatKeyWordWasntFound("Ooga anisotropic polycarbonate", "", ((string[])(null)));
+this.VerifyThatKeyWordWasntFound("Ooga anisotropic polycarbonate", "JHFkjhdskjhfkjjgsajgfg", ((string[])(null)));
 #line hidden
         }
     }

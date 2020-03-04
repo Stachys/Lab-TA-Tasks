@@ -11,7 +11,7 @@ namespace lab_ta_homework_5
         public const int minPrice = 65000;
 
         //Search engine base
-        public const string pathToImages = "C:\\Users\\{0}\\Desktop\\Images\\{1}\\{2} by {3}\\";
+        public const string pathToImages = "C:\\Users\\{0}\\Desktop\\Images\\{1}\\{2} {3} by {4}\\";
         public const string foundToConsole = "Found {0} by {1} on {2} page";
         public const string imageNameFound = "{0}\\Page {1} - found.png";
         public const string imageNameNotFound = "{0}\\Page {1} - not found.png";
@@ -33,7 +33,7 @@ namespace lab_ta_homework_5
         //Yahoo
         public const string yahooUrl = "https://www.yahoo.com/";
         public const string yahooSearchFieldXPath = "//input[@id='header-search-input']";
-        public const string yahooResultsXPath = "//div[@id='web']//li/div/div";
+        public const string yahooResultsXPath = "//div[@id='web']//li/div[contains(@class,'algo')]/div";
         public const string yahooNextXPath = "//a[@class='next']";
         public const string yahooPageNumXPath = "//div[@class='compPagination']/strong";
 

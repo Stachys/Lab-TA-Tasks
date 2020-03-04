@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using OpenQA.Selenium;
-using WDSE;
-using WDSE.Decorators;
-using WDSE.ScreenshotMaker;
 
 namespace lab_ta_homework_5.Search_engines
 {
@@ -44,28 +41,35 @@ namespace lab_ta_homework_5.Search_engines
         public int VerifyResults(string toFind, bool screenshotAllPages)
         {
             ToFind = toFind;
-            PathToSave = String.Format(Constants.pathToImages, Environment.UserName, this.GetType().Name, ToFind, ToSearch + " " + DateTime.Now.ToString(Constants.dateTime));
+            PathToSave = String.Format(Constants.pathToImages, Environment.UserName, this.GetType().Name, DateTime.Now.ToString(Constants.dateTime), ToFind, ToSearch);
             Directory.CreateDirectory(PathToSave);
             IList<IWebElement> next;
             do
             {
-                string pageNum = driver.FindElement(By.XPath(PageNumXPath)).Text;
+                string pageNum;
                 IList<IWebElement> results = driver.FindElements(By.XPath(ResultsXPath));
+                if (results.Count == 0)
+                {
+                    pageNum = "no result";
+                }
+                else
+                {
+                    pageNum = driver.FindElement(By.XPath(PageNumXPath)).Text;
+                }
+
                 foreach (IWebElement result in results)
                 {
                     if (result.Text.Contains(ToFind))
                     {
                         Console.WriteLine(String.Format(Constants.foundToConsole, ToFind, ToSearch, pageNum));
-                        var bytesArr = driver.TakeScreenshot(new VerticalCombineDecorator(new ScreenshotMaker().RemoveScrollBarsWhileShooting()));
-                        Driver.BytesToBitmap(bytesArr).Save(String.Format(Constants.imageNameFound, PathToSave, pageNum));
+                        Driver.GetScreenshot().Save(String.Format(Constants.imageNameFound, PathToSave, pageNum));
                         return Int32.Parse(pageNum);
                     }
                 }
 
                 if (screenshotAllPages)
                 {
-                    var bytesArr = driver.TakeScreenshot(new VerticalCombineDecorator(new ScreenshotMaker().RemoveScrollBarsWhileShooting()));
-                    Driver.BytesToBitmap(bytesArr).Save(String.Format(Constants.imageNameNotFound, PathToSave, pageNum));
+                    Driver.GetScreenshot().Save(String.Format(Constants.imageNameNotFound, PathToSave, pageNum));
                 }
 
                 next = driver.FindElements(By.XPath(NextXPath));

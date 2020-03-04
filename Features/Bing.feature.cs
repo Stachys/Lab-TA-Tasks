@@ -142,11 +142,11 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("search")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Glass boga anisotropic polycarbonate")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:search", "Glass boga anisotropic polycarbonate")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:find", "")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:find", "Toughening in Graphene Ceramic Composites")]
         public virtual void VerifyThatKeyWordFoundOnTheFirstPage_GlassBogaAnisotropicPolycarbonate()
         {
 #line 7
-this.VerifyThatKeyWordFoundOnTheFirstPage("Glass boga anisotropic polycarbonate", "", ((string[])(null)));
+this.VerifyThatKeyWordFoundOnTheFirstPage("Glass boga anisotropic polycarbonate", "Toughening in Graphene Ceramic Composites", ((string[])(null)));
 #line hidden
         }
         
@@ -257,11 +257,11 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("search")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Glass boga anisotropic polycarbonate")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:search", "Glass boga anisotropic polycarbonate")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:find", "")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:find", "dnasgbfjbdfjBFJSgdrasghbhFS")]
         public virtual void VerifyThatKeyWordWasntFound_GlassBogaAnisotropicPolycarbonate()
         {
 #line 27
-this.VerifyThatKeyWordWasntFound("Glass boga anisotropic polycarbonate", "", ((string[])(null)));
+this.VerifyThatKeyWordWasntFound("Glass boga anisotropic polycarbonate", "dnasgbfjbdfjBFJSgdrasghbhFS", ((string[])(null)));
 #line hidden
         }
     }
