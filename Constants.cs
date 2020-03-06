@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace lab_ta_homework_5
 {
     public static class Constants
@@ -8,7 +7,6 @@ namespace lab_ta_homework_5
         public const int explicitWaitSec = 10;
         public const string dateTime = "dd-MM-yyyy HH-mm";
         public const string noUrlMessage = "Page has no predefined url";
-        public const int minPrice = 65000;
 
         //Search engine base
         public const string pathToImages = "C:\\Users\\{0}\\Desktop\\Images\\{1}\\{2} {3} by {4}\\";

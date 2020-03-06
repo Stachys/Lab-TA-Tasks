@@ -63,6 +63,7 @@ namespace lab_ta_homework_5.Shopping_websites
         public override IEnumerable<int> GetPrices()
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(Constants.explicitWaitSec));
+            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
             wait.Until(ExpectedConditions.TextToBePresentInElementLocated(filterOption, MinPrice.ToString()));
 
             return base.GetPrices();
