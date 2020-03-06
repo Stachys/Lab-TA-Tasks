@@ -41,7 +41,7 @@ namespace lab_ta_homework_5.Shopping_websites
 
         public void LaptopsAndAccessories()
         {
-            laptopsAndAccessories.Click();            
+            laptopsAndAccessories.Click();
         }
 
         public void TypeOfGoodsDropdown()
@@ -51,14 +51,29 @@ namespace lab_ta_homework_5.Shopping_websites
 
         public void LaptopsInDropdown()
         {
-            laptopsInDropdown.Click();
+            try
+            {
+                laptopsInDropdown.Click();
+            }
+            catch (NoSuchElementException)
+            {
+                TypeOfGoodsDropdown();
+                LaptopsInDropdown();
+            }
         }
 
         public void SetMinPrice(int minPrice)
         {
             WaitListLoad(Constants.explicitWaitSec);
-            minField.Click();
-            filterInput.SendKeys(minPrice.ToString());
+            try
+            {
+                minField.Click();
+                filterInput.SendKeys(minPrice.ToString());
+            }
+            catch (ElementNotInteractableException)
+            {
+                SetMinPrice(minPrice);
+            }
         }
 
         public override IEnumerable<int> GetPrices()
@@ -70,8 +85,15 @@ namespace lab_ta_homework_5.Shopping_websites
         private void WaitListLoad(int sec)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(sec));
-            wait.Until(d => d.FindElement(listContainer).GetAttribute("class") == "loaderActive");
-            wait.Until(d => d.FindElement(listContainer).GetAttribute("class") == "");
+            if (driver.FindElement(listContainer).GetAttribute("class") == "loaderActive")
+            {
+                wait.Until(d => d.FindElement(listContainer).GetAttribute("class") == "");
+            }
+            else
+            {
+                System.Threading.Thread.Sleep(3000); // I tried... ;(
+                wait.Until(d => d.FindElement(listContainer).GetAttribute("class") == "");
+            }
         }
     }
 }
