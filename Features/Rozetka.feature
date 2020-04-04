@@ -7,8 +7,8 @@
 Scenario Outline: Search for laptops with set minimum price and verify results
 	Given I am on the main page
 	When I search for laptops
-	And set minimum price to <price>
-	Then the results prices should be greater than or equal to <price>
+	And I set minimum price to <price>
+	Then The results prices should be greater than or equal to <price>
 	
 	Examples: 
 	| price |

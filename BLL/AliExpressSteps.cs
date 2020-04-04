@@ -18,29 +18,32 @@ namespace lab_ta_homework_5.BLL
         }
 
         [When(@"I sign in")]
-        public void SignIn(string login, string password)
+        public void SignIn()
         {
             aliExpress.CloseAd();
             aliExpress.MoveToMyProfile();
             aliExpress.SingInClick();
-            aliExpress.FillSignInForm(login, password);
+            aliExpress.FillSignInForm();
         }
 
         [When(@"I search for laptops")]
         public void SearchForLaptops()
         {
+            aliExpress.CloseAd();
+            aliExpress.CategoriesClick();
             aliExpress.MoveToComputers();
             aliExpress.LabtopsClick();
         }
 
-        [When(@"set minimum price to (.*)")]
+        [When(@"I set minimum price to (.*)")]
         public void SetFilter(int minPrice)
         {
+            aliExpress.CloseAd();
             aliExpress.SetMinPrice(minPrice);
             aliExpress.SubmitFilter();
         }
 
-        [Then(@"the results prices should be greater than or equal to (.*)")]
+        [Then(@"The results prices should be greater than or equal to (.*)")]
         public void VerifyResults(int minPrice)
         {
             IEnumerable<int> prices = aliExpress.GetPrices();

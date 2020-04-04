@@ -26,13 +26,13 @@ namespace lab_ta_homework_5.BLL
             olx.LaptopsInDropdown();
         }
 
-        [When(@"set minimum price to (.*)")]
+        [When(@"I set minimum price to (.*)")]
         public void SetFilter(int minPrice)
         {
             olx.SetMinPrice(minPrice);
         }
 
-        [Then(@"the results prices should be greater than or equal to (.*)")]
+        [Then(@"The results prices should be greater than or equal to (.*)")]
         public void VerifyResults(int minPrice)
         {
             IEnumerable<int> prices = olx.GetPrices();

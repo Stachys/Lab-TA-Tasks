@@ -140,6 +140,7 @@
     <Compile Include="BLL\RozetkaSteps.cs" />
     <Compile Include="BLL\SearchEngineSteps.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Credentials.cs" />
     <Compile Include="MyWebDriver.cs" />
     <Compile Include="Search engines\SearchEngine.cs" />
     <Compile Include="Search engines\Bing.cs" />

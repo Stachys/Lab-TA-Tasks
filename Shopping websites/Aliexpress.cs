@@ -3,7 +3,6 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace lab_ta_homework_5.Shopping_websites
 {
@@ -27,6 +26,9 @@ namespace lab_ta_homework_5.Shopping_websites
         [FindsBy(How = How.XPath, Using = "//input[@id='fm-login-password']")]
         private IWebElement passwordField;
 
+        [FindsBy(How = How.XPath, Using = "//div[@data-role='category-content']//span[text()='Категории']")]
+        private IWebElement categories;
+
         [FindsBy(How = How.XPath, Using = "//dl[contains(@class,'cl-item-computer')]/dt/span")]
         private IWebElement computers;
 
@@ -39,8 +41,6 @@ namespace lab_ta_homework_5.Shopping_websites
         [FindsBy(How = How.XPath, Using = "//a[@class='ui-button narrow-go']")]
         private IWebElement submitFilter;
 
-        private By adContainer = By.XPath("//div[@class='newuser-container' and contains(@style,'background-image')]");
-
         public AliExpress() : base()
         {
             Url = Constants.aliExpressUrl;
@@ -49,13 +49,15 @@ namespace lab_ta_homework_5.Shopping_websites
 
         public void CloseAd()
         {
-            TimeSpan wait = driver.Manage().Timeouts().ImplicitWait;
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
-            if (driver.FindElements(adContainer).Count != 0)
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2.5);
+            try
             {
                 closeAd.Click();
             }
-            driver.Manage().Timeouts().ImplicitWait = wait;
+            catch (NoSuchElementException)
+            {
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Constants.implicitWaitSec);
+            }
         }
 
         public void MoveToMyProfile()
@@ -74,13 +76,18 @@ namespace lab_ta_homework_5.Shopping_websites
             }
         }
 
-        public void FillSignInForm(string login, string password)
+        public void FillSignInForm()
         {
             driver.SwitchTo().Frame(signInFrame);
-            loginField.SendKeys(login);
-            passwordField.SendKeys(password);
+            loginField.SendKeys(Credentials.AliLogin);
+            passwordField.SendKeys(Credentials.AliPassword);
             passwordField.SendKeys(Keys.Enter);
             driver.SwitchTo().DefaultContent();
+        }
+
+        public void CategoriesClick()
+        {
+            categories.Click();
         }
 
         public void MoveToComputers()
@@ -107,9 +114,7 @@ namespace lab_ta_homework_5.Shopping_websites
 
         public override IEnumerable<int> GetPrices()
         {
-            //Add explicit wait
-
-            return driver.FindElements(By.XPath(PricesXPath)).Select(p => Int32.Parse(p.Text.Substring(0, p.Text.IndexOf('-') - 4).Replace(" ", "")));
+            throw new NotImplementedException();
         }
     }
 }

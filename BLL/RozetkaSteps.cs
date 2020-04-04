@@ -25,14 +25,14 @@ namespace lab_ta_homework_5.BLL
             rozetka.LaptopsClick();
         }
 
-        [When(@"set minimum price to (.*)")]
+        [When(@"I set minimum price to (.*)")]
         public void SetFilter(int minPrice)
         {
             rozetka.SetMinPrice(minPrice);
             rozetka.SubmitFilter();
         }
 
-        [Then(@"the results prices should be greater than or equal to (.*)")]
+        [Then(@"The results prices should be greater than or equal to (.*)")]
         public void VerifyResults(int minPrice)
         {
             IEnumerable<int> prices = rozetka.GetPrices();
